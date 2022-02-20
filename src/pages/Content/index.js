@@ -3,8 +3,10 @@ import { render } from 'react-dom';
 import { StashTabViewer } from './modules/StashTabViewer';
 import {FossilPositionMap} from "./modules/FossilPositionMap";
 import FossilTabImage from '../../assets/img/Tab_Fossil.png';
-import EssenceTabImage from '../../assets/img/Tab_Essence.png';
 import {EssencePositionMap} from "./modules/EssencePositionMap";
+import EssenceTabImage from '../../assets/img/Tab_Essence.png';
+import {ScarabPositionMap} from "./modules/ScarabPositionMap";
+import ScarabTabImage from '../../assets/img/Tab_Scarab.png';
 
 const _init = ({
     ItemPositionMap,
@@ -60,6 +62,11 @@ const _init = ({
     const headerRoot = document.createElement('div');
     headerWrapper.appendChild(headerRoot);
 
+    const unknownItems = items.filter(item => !ItemPositionMap[item.name]).map(item => item.name);
+    if (unknownItems.length) {
+        console.log('Items missing from ItemPositionMap:', unknownItems);
+    }
+
     render((
             <StashTabViewer
                 ItemPositionMap={ItemPositionMap}
@@ -109,6 +116,13 @@ const init = () => loadFullTable(() => {
                 getCurrencyAlt: ([col1, col2, col3]) => col3?.querySelector('img')?.getAttribute('alt') ?? '',
             });
             break;
+        case '/challenge/scarabs':
+            _init({
+                ItemPositionMap: ScarabPositionMap,
+                tabImage: chrome.runtime.getURL(ScarabTabImage),
+                maxHeight: null,
+                fadeBottom: false,
+            });
     }
 });
 
