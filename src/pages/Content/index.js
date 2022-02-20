@@ -7,6 +7,11 @@ import {EssencePositionMap} from "./modules/EssencePositionMap";
 import EssenceTabImage from '../../assets/img/Tab_Essence.png';
 import {ScarabPositionMap} from "./modules/ScarabPositionMap";
 import ScarabTabImage from '../../assets/img/Tab_Scarab.png';
+import {FragmentPositionMap} from "./modules/FragmentPositionMap";
+import FragmentTabImage from '../../assets/img/Tab_Fragments.png';
+
+const TableSelector = '.item-overview table, main table';
+const HeaderSelector = '.item-overview h1, main h1';
 
 const _init = ({
     ItemPositionMap,
@@ -23,7 +28,7 @@ const _init = ({
     root.className = 'poe-ninja-stash-tab-view';
     document.body.appendChild(root);
 
-    const table = document.querySelector('.item-overview table');
+    const table = document.querySelector(TableSelector);
     // console.log('table', table);
 
     const beforeTableRoot = document.createElement('div');
@@ -51,7 +56,7 @@ const _init = ({
     });
     // console.log('items', items);
 
-    const itemHeader = document.querySelector('.item-overview h1');
+    const itemHeader = document.querySelector(HeaderSelector);
     const headerWrapper = document.createElement('div');
     headerWrapper.className = 'header-wrapper';
     // @ts-ignore
@@ -123,19 +128,28 @@ const init = () => loadFullTable(() => {
                 maxHeight: null,
                 fadeBottom: false,
             });
+            break;
+        case '/challenge/fragments':
+            _init({
+                ItemPositionMap: FragmentPositionMap,
+                tabImage: chrome.runtime.getURL(FragmentTabImage),
+                maxHeight: null,
+                fadeBottom: false,
+            });
+            break;
     }
 });
 
 let initialized = false;
 
-if (document.querySelector('.item-overview table')) {
+if (document.querySelector(TableSelector)) {
     init();
     initialized = true;
 } else {
     const observer = new MutationObserver((mutations) => {
         for (let mutation in mutations) {
             for (let node in mutation.addedNodes) {
-                if (node.matches('.item-overview table') && !initialized) {
+                if (node.matches(TableSelector) && !initialized) {
                     init();
                     initialized = true;
                     break;
