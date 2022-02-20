@@ -87,4 +87,19 @@
       }
     }
   }
+
+  .stash-tab-button {
+    position: absolute;
+    appearance: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-image: var(--background-image-inactive);
+
+    &:hover {
+      background-image: var(--background-image-active);
+    }
+  }
 }

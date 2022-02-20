@@ -53,7 +53,7 @@ $text-color: #ffffff;
       }
 
       &__value {
-        font-size: 3rem !important; // !important to beat inline computed styles - hover only
+        font-size: 2rem !important; // !important to beat inline computed styles - hover only
       }
 
       &__name {

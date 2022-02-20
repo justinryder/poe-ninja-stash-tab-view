@@ -16,10 +16,10 @@
   "content_scripts": [
     {
       "matches": [
-        "https://poe.ninja/challenge/essences",
-        "https://poe.ninja/challenge/fossils",
-        "https://poe.ninja/challenge/fragments",
-        "https://poe.ninja/challenge/scarabs"
+        "https://poe.ninja/challenge/essences*",
+        "https://poe.ninja/challenge/fossils*",
+        "https://poe.ninja/challenge/fragments*",
+        "https://poe.ninja/challenge/scarabs*"
       ],
       "js": ["contentScript.bundle.js"],
       "css": ["content.styles.css"]

@@ -27,7 +27,7 @@ export const Item = ({ item, position, valueAlpha }: ItemProps) => (
             <div
                 className="item__value"
                 style={{
-                    fontSize: `${lerp(1.2, 3, valueAlpha)}rem`,
+                    fontSize: `${lerp(1.2, 2, valueAlpha)}rem`,
                     fontWeight: lerp(400, 900, valueAlpha),
                 }}
             >

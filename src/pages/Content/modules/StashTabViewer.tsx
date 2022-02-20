@@ -5,6 +5,8 @@ import './StashTabViewer.scss';
 import {Item} from "./Item";
 import {Item as ItemDef, Position} from './types';
 import { sortBy } from 'naan-utils';
+import {StashTabButton, StashTabButtonProps} from "./StashTabButton";
+import {useQueryStringNumber} from "./useQueryString";
 
 type StashTabProps = {
     ItemPositionMap: Record<string, Position>;
@@ -15,7 +17,7 @@ type StashTabProps = {
     fadeBottom: boolean;
 }
 
-const StashTab = ({ ItemPositionMap, tabImage, items, beforeTableRoot, maxHeight, fadeBottom }: StashTabProps) => {
+const StashTab: React.FC<StashTabProps> = ({ children, ItemPositionMap, tabImage, items, beforeTableRoot, maxHeight, fadeBottom }) => {
     const maxValueItem = items.reduce((result, item) => result.value < item.value ? item : result, { value: 0 } as ItemDef);
     const minValueItem = items.reduce((result, item) => result.value > item.value ? item : result, { value: Infinity } as ItemDef);
     const range = maxValueItem.value - minValueItem.value;
@@ -61,6 +63,7 @@ const StashTab = ({ ItemPositionMap, tabImage, items, beforeTableRoot, maxHeight
                             valueAlpha={(item.value - minValueItem.value) / range}
                         />
                     ))}
+                {children}
             </div>
         </>
         ),
@@ -68,18 +71,41 @@ const StashTab = ({ ItemPositionMap, tabImage, items, beforeTableRoot, maxHeight
     );
 };
 
-type FossilTabProps = {
-    ItemPositionMap: Record<string, Position>;
-    tabImage: string;
+type StashTabViewerProps = {
     items: ItemDef[];
+    defaultTab: number;
     beforeTableRoot: Element;
     headerRoot: Element;
-    maxHeight: number | string;
-    fadeBottom: boolean;
+    tabs: Array<{
+        ItemPositionMap: Record<string, Position>;
+        tabImage: string;
+        maxHeight: number | string;
+        fadeBottom: boolean;
+        button: StashTabButtonProps;
+    }>
 }
 
-export const StashTabViewer = ({ ItemPositionMap, tabImage, items, beforeTableRoot, headerRoot, maxHeight, fadeBottom }: FossilTabProps) => {
+export const StashTabViewer = ({ tabs, defaultTab, items, beforeTableRoot, headerRoot }: StashTabViewerProps) => {
     const [showStashTab, setShowStashTab] = useState(true);
+    const [activeTabIndex, setActiveTabIndex] = useQueryStringNumber('tab', defaultTab);
+    console.log('activeTabIndex', activeTabIndex);
+
+    const buttons = tabs.map((tab, index) => ({
+        ...tab.button,
+        onClick: () => setActiveTabIndex(index),
+    }));
+
+    const {
+        ItemPositionMap,
+        tabImage,
+        maxHeight,
+        fadeBottom,
+    } = tabs[activeTabIndex];
+
+    const unknownItems = items.filter(item => !ItemPositionMap[item.name]).map(item => item.name);
+    if (unknownItems.length) {
+        console.log('Items missing from ItemPositionMap:', unknownItems);
+    }
 
     return ReactDOM.createPortal((
             <>
@@ -94,7 +120,15 @@ export const StashTabViewer = ({ ItemPositionMap, tabImage, items, beforeTableRo
                         beforeTableRoot={beforeTableRoot}
                         maxHeight={maxHeight}
                         fadeBottom={fadeBottom}
-                    />
+                    >
+                        {buttons.map((button, index) => (
+                            <StashTabButton
+                                key={index}
+                                {...button}
+                                active={false}
+                            />
+                        ))}
+                    </StashTab>
                 )}
             </>
         ),
