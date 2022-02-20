@@ -88,7 +88,6 @@ type StashTabViewerProps = {
 export const StashTabViewer = ({ tabs, defaultTab, items, beforeTableRoot, headerRoot }: StashTabViewerProps) => {
     const [showStashTab, setShowStashTab] = useState(true);
     const [activeTabIndex, setActiveTabIndex] = useQueryStringNumber('tab', defaultTab);
-    console.log('activeTabIndex', activeTabIndex);
 
     const buttons = tabs.map((tab, index) => ({
         ...tab.button,
@@ -102,10 +101,10 @@ export const StashTabViewer = ({ tabs, defaultTab, items, beforeTableRoot, heade
         fadeBottom,
     } = tabs[activeTabIndex];
 
-    const unknownItems = items.filter(item => !ItemPositionMap[item.name]).map(item => item.name);
-    if (unknownItems.length) {
-        console.log('Items missing from ItemPositionMap:', unknownItems);
-    }
+    // const unknownItems = items.filter(item => !ItemPositionMap[item.name]).map(item => item.name);
+    // if (unknownItems.length) {
+    //     console.log('Items missing from ItemPositionMap:', unknownItems);
+    // }
 
     return ReactDOM.createPortal((
             <>
