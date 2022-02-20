@@ -1,0 +1,90 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.header-wrapper {
+  display: flex;
+  align-items: center;
+
+  h1 {
+    flex-grow: 1;
+  }
+}
+
+.stash-tab-show-button {
+  appearance: none;
+  display: inline-grid;
+  grid-auto-flow: column;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  gap: 0.5em;
+  font-weight: var(--font-medium);
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition: all 0.05s ease 0s;
+  color: #{'hsla(var(--emerald-500))'};
+  background-color: #{'hsla(var(--coolgrey-800))'};
+  border-radius: var(--rounded-full);
+  font-size: var(--text-sm);
+  height: 2.5rem;
+  padding-left: 1em;
+  padding-right: 1em;
+
+  &:hover {
+    color: #{'hsla(var(--coolgrey-800))'};
+    background-color: #{'hsla(var(--emerald-500))'};
+  }
+}
+
+.before-table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stash-price-summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25em;
+}
+
+.stash-tab-wrapper {
+  align-self: center;
+  position: relative;
+  margin-bottom: 25px;
+  border-radius: var(--rounded-lg);
+
+  &__image {
+  }
+
+  &__item {
+    position: absolute;
+    //border: 1px solid red;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    .item__label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 100%;
+      min-height: 100%;
+    }
+
+    &:focus,
+    &:hover {
+      .item__label {
+        min-width: 150%;
+        min-height: 150%;
+      }
+    }
+  }
+}

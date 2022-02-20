@@ -1,0 +1,65 @@
+
+$background-color: rgba(#282c34, 0.75);
+$text-color: #ffffff;
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 4px;
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: $background-color;
+    border-radius: 4px;
+    color: $text-color;
+    padding: 0.25em 0.5em;
+  }
+
+  &__value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+
+    &__text {
+      line-height: 1;
+    }
+
+    &__icon {
+      width: 1em;
+      height: 1em;
+    }
+  }
+
+  &__name {
+    font-weight: bold;
+    line-height: 1;
+    display: none;
+  }
+
+  &:focus,
+  &:hover {
+    z-index: 1;
+
+    .item {
+      &__label {
+      }
+
+      &__value {
+        font-size: 3rem !important; // !important to beat inline computed styles - hover only
+      }
+
+      &__name {
+        display: block;
+        white-space: nowrap;
+      }
+    }
+  }
+}
