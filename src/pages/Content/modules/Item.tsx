@@ -3,6 +3,16 @@ import './Item.scss';
 import { Item as ItemDef, Position } from './types';
 import {lerp, lerpColor} from "./lerp";
 
+const priceColor = (valueAlpha: number) => {
+    if (valueAlpha < 0.1) {
+        return '#FF0000';
+    }
+    if (valueAlpha < 0.5) {
+        return '#FFFF00';
+    }
+    return '#00ff00';
+};
+
 type ItemProps = {
     item: ItemDef;
     position: Position;
@@ -19,6 +29,7 @@ export const Item = ({ item, position, valueAlpha }: ItemProps) => (
             width: position.width,
             height: position.height,
             backgroundImage: `url(${item.icon})`,
+            boxShadow: `0px 0px 0px ${lerp(1, 4, valueAlpha)}px ${priceColor(valueAlpha)}`,
         }}
         title={`${item.name} ${item.value} ${item.valueCurrency.alt}`}
         tabIndex={0}
