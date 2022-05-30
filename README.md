@@ -1,4 +1,30 @@
+# poe.ninja stash tab view
+
+Adds a stash tab view to supported poe.ninja price pages that overlays the price data where the item is in the stash.
+
 <img src="src/assets/img/icon-128.png" width="64"/>
+
+## Supported pages
+
+### Essences
+[https://poe.ninja/challenge/essences](https://poe.ninja/challenge/essences)
+![image](https://user-images.githubusercontent.com/2396658/170910601-5e094fa7-f501-4551-8ac2-ecb421a49719.png)
+
+### Fossils
+[https://poe.ninja/challenge/fossils](https://poe.ninja/challenge/fossils)
+![image](https://user-images.githubusercontent.com/2396658/170910815-acb5217e-f15f-4c89-8062-cf49ab9c06c9.png)
+
+### Fragments
+[https://poe.ninja/challenge/fragments](https://poe.ninja/challenge/fragments)
+![image](https://user-images.githubusercontent.com/2396658/170910719-b255f99e-5875-4079-866d-4d9f2c645f6f.png)
+
+### Scarabs
+[https://poe.ninja/challenge/scarabs](https://poe.ninja/challenge/scarabs)
+![image](https://user-images.githubusercontent.com/2396658/170910920-0e0eb077-e91c-4c76-a3d6-15cca917a1f4.png)
+
+### Breach
+[https://poe.ninja/challenge/fragments?tab=1](https://poe.ninja/challenge/fragments?tab=1)
+![image](https://user-images.githubusercontent.com/2396658/170911115-7226bdae-ba68-4520-8769-4e30468d2164.png)
 
 # Chrome Extension Boilerplate with React 17 and Webpack 5
 
