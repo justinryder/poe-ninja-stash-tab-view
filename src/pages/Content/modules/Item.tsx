@@ -29,12 +29,16 @@ export const Item = ({ item, position, valueAlpha }: ItemProps) => (
             width: position.width,
             height: position.height,
             backgroundImage: `url(${item.icon})`,
-            boxShadow: `0px 0px 0px ${lerp(1, 4, valueAlpha)}px ${priceColor(valueAlpha)}`,
         }}
         title={`${item.name} ${item.value} ${item.valueCurrency.alt}`}
         tabIndex={0}
     >
-        <div className="item__label">
+        <div
+            className="item__label"
+            style={{
+                boxShadow: `inset 0px 0px 0px 1px ${priceColor(valueAlpha)}`,
+            }}
+        >
             <div
                 className="item__value"
                 style={{
