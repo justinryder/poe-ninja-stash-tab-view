@@ -52,7 +52,6 @@ const StashTab: React.FC<StashTabProps> = ({ children, ItemPositionMap, tabImage
             >
                 <img className="stash-tab-wrapper__image" src={tabImage} alt="Stash tab" />
                 {items
-                    .filter(item => ItemPositionMap[item.name])
                     // .sort(sortBy(item => ItemPositionMap[item.name].y))
                     // .sort(sortBy(item => ItemPositionMap[item.name].x))
                     .map(item => (
@@ -115,7 +114,7 @@ export const StashTabViewer = ({ tabs, defaultTab, items, beforeTableRoot, heade
                     <StashTab
                         ItemPositionMap={ItemPositionMap}
                         tabImage={tabImage}
-                        items={items}
+                        items={items.filter(item => ItemPositionMap[item.name])}
                         beforeTableRoot={beforeTableRoot}
                         maxHeight={maxHeight}
                         fadeBottom={fadeBottom}
