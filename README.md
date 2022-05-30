@@ -28,7 +28,7 @@ Adds a stash tab view to supported poe.ninja price pages that overlays the price
 
 ## Known Issues
 
-* [Does not always load]([url](https://github.com/justinryder/poe-ninja-stash-tab-view/issues/7)) - workaround: refresh the page until it does
+* [Does not always load](https://github.com/justinryder/poe-ninja-stash-tab-view/issues/7) - workaround: refresh the page until it does
 
 ## Installing and Running
 
