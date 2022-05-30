@@ -42,12 +42,13 @@ Adds a stash tab view to supported poe.ninja price pages that overlays the price
    1. Check `Developer mode`
    1. Click on `Load unpacked extension`
    1. Select the `build` folder.
+1. Load a [supported poe.ninja page](https://poe.ninja/challenge/essences)
 1. Happy selling.
 
 ### Reloading local changes
 
 1. Run `npm start`
-2. Make changes locally and save
-3. Find extension in `chrome://extensions/`
-4. Click the reload button
-5. Load the page
+1. Make changes locally and save
+1. Find extension in `chrome://extensions/`
+1. Click the reload button
+1. Reload a [supported poe.ninja page](https://poe.ninja/challenge/essences)
