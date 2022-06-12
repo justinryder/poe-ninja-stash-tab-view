@@ -26,6 +26,11 @@ Adds a stash tab view to supported poe.ninja price pages that overlays the price
 [https://poe.ninja/challenge/fragments?tab=1](https://poe.ninja/challenge/fragments?tab=1)
 ![image](https://user-images.githubusercontent.com/2396658/171046114-51993f14-3295-4cbe-94ae-373cc656e768.png)
 
+### Delirium
+[https://poe.ninja/challenge/delirium-orbs](https://poe.ninja/challenge/delirium-orbs)
+![image](https://user-images.githubusercontent.com/2396658/173211355-b0debda7-3448-422c-a514-52f422107e81.png)
+
+
 ## Known Issues
 
 * [Does not always load](https://github.com/justinryder/poe-ninja-stash-tab-view/issues/7) - workaround: refresh the page until it does
