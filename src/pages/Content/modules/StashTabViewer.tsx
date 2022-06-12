@@ -100,10 +100,12 @@ export const StashTabViewer = ({ tabs, defaultTab, items, beforeTableRoot, heade
         fadeBottom,
     } = tabs[activeTabIndex];
 
-    // const unknownItems = items.filter(item => !ItemPositionMap[item.name]).map(item => item.name);
-    // if (unknownItems.length) {
-    //     console.log('Items missing from ItemPositionMap:', unknownItems);
-    // }
+    const filteredItems = items.filter(item => ItemPositionMap[item.name]);
+
+    const unknownItems = items.filter(item => !ItemPositionMap[item.name]).map(item => item.name);
+    if (unknownItems.length) {
+        console.log('Items missing from ItemPositionMap:', unknownItems);
+    }
 
     return ReactDOM.createPortal((
             <>
@@ -114,7 +116,7 @@ export const StashTabViewer = ({ tabs, defaultTab, items, beforeTableRoot, heade
                     <StashTab
                         ItemPositionMap={ItemPositionMap}
                         tabImage={tabImage}
-                        items={items.filter(item => ItemPositionMap[item.name])}
+                        items={filteredItems}
                         beforeTableRoot={beforeTableRoot}
                         maxHeight={maxHeight}
                         fadeBottom={fadeBottom}

@@ -17,6 +17,8 @@ import TabButtonGeneralActive from '../../assets/img/Tab_Button_General_Active.p
 import TabButtonGeneralInactive from '../../assets/img/Tab_Button_General_Inactive.png';
 import TabButtonScarabActive from '../../assets/img/Tab_Button_Scarab_Active.png';
 import TabButtonScarabInactive from '../../assets/img/Tab_Button_Scarab_Inactive.png';
+import {DeliriumPositionMap} from "./modules/DeliriumPositionMap";
+import DeliriumTabImage from '../../assets/img/Tab_Delirium.png';
 
 const TableSelector = '.item-overview table, main table';
 const HeaderSelector = '.item-overview h1, main h1';
@@ -203,6 +205,19 @@ const init = () => loadFullTable(() => {
                     fadeBottom: false,
                 }],
                 defaultTab: 0,
+            });
+            break;
+        case '/challenge/delirium-orbs':
+            _init({
+                tabs:[{
+                    ItemPositionMap: DeliriumPositionMap,
+                    tabImage: chrome.runtime.getURL(DeliriumTabImage),
+                    maxHeight: 565,
+                    fadeBottom: true,
+                }],
+                getValue: ([col1, col2]) => parseFloat(col2?.querySelector('span')?.innerText),
+                getCurrencySrc: ([col1, col2]) => col2?.querySelector('img')?.getAttribute('src') ?? '',
+                getCurrencyAlt: ([col1, col2]) => col2?.querySelector('img')?.getAttribute('alt') ?? '',
             });
             break;
     }

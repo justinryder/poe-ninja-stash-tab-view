@@ -19,7 +19,8 @@
         "https://poe.ninja/challenge/essences*",
         "https://poe.ninja/challenge/fossils*",
         "https://poe.ninja/challenge/fragments*",
-        "https://poe.ninja/challenge/scarabs*"
+        "https://poe.ninja/challenge/scarabs*",
+        "https://poe.ninja/challenge/delirium-orbs*"
       ],
       "js": ["contentScript.bundle.js"],
       "css": ["content.styles.css"]
